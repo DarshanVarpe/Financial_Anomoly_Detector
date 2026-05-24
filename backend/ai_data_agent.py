@@ -49,7 +49,7 @@ iso_forest.fit(baseline_data)
 
 async def generate_and_insert(pool):
     # 1. Generate realistic transaction
-    is_fraud_attempt = random.random() < 0.8  # ✨ 80% chance for rapid demo testing
+    is_fraud_attempt = random.random() < 0.2  # 20% chance for realistic testing
     
     ref = f"TXN-{random.randint(1000000, 9999999)}"
     currency = "USD"
@@ -173,7 +173,7 @@ async def main():
     try:
         while True:
             await generate_and_insert(pool)
-            await asyncio.sleep(5) # Inject every 5 seconds
+            await asyncio.sleep(15) # Inject every 15 seconds
     except KeyboardInterrupt:
         print("\n🛑 AI Data Agent stopped.")
     finally:
